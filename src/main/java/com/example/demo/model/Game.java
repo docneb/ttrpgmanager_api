@@ -3,7 +3,9 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+// Game.java
 @Entity
 @Table(name = "games")
 @Data
@@ -15,9 +17,10 @@ public class Game {
     private String title;
     private String description;
     private int maxPlayers;
-    private boolean isPublic;
-    private LocalDateTime createdAt = LocalDateTime.now();
 
-    // Şimdilik basit tutmak için gmId'yi direkt tutalım
+    // isPublic yerine publicGame yapıyoruz
+    private boolean publicGame;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
     private Long gmId;
 }
