@@ -24,5 +24,9 @@ public class Note {
     private String noteType;
     private Long userId;
 
+    // YENİ EKLENEN KISIM: Notun bağlı olduğu oyun (Kişisel notsa null kalır)
+    @Column(name = "game_id")
+    private Long gameId;
+
     private LocalDateTime createdAt = LocalDateTime.now();
 }
