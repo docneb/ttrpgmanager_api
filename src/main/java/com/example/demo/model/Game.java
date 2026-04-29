@@ -18,7 +18,7 @@ public class Game {
     private String description;
     private int maxPlayers;
 
-    // isPublic yerine publicGame yapıyoruz
+    @Column(name = "is_public")
     private boolean publicGame;
 
     private LocalDateTime createdAt = LocalDateTime.now();
