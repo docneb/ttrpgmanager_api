@@ -1,0 +1,1 @@
+ALTER TABLE games ADD COLUMN invite_code VARCHAR(10) UNIQUE;
