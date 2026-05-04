@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -42,5 +44,19 @@ public class UserController {
                     .status(HttpStatus.UNAUTHORIZED)
                     .body(Map.of("message", "Hatalı email veya şifre!"));
         }
+    }
+
+    // YENİ: Oyuncu ID listesini alıp, ID -> Username eşleşmesi döndüren endpoint
+    @PostMapping("/usernames")
+    public ResponseEntity<Map<Long, String>> getUsernames(@RequestBody List<Long> userIds) {
+        // UserRepository içindeki hazır findAllById metodunu kullanıyoruz
+        List<User> users = userRepository.findAllById(userIds);
+
+        Map<Long, String> usernameMap = new HashMap<>();
+        for (User user : users) {
+            usernameMap.put(user.getId(), user.getUsername());
+        }
+
+        return ResponseEntity.ok(usernameMap);
     }
 }

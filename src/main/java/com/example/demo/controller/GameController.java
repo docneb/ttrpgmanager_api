@@ -92,4 +92,18 @@ public class GameController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    // YENİ: Oyunu bitirme endpoint'i
+    @PutMapping("/{id}/finish")
+    public ResponseEntity<?> finishGame(@PathVariable Long id) {
+        Optional<Game> gameOptional = gameRepository.findById(id);
+
+        if (gameOptional.isPresent()) {
+            Game game = gameOptional.get();
+            game.setFinished(true); // Oyunu bitti olarak işaretle
+            gameRepository.save(game);
+            return ResponseEntity.ok(game);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

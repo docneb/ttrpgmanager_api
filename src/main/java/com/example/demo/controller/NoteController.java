@@ -46,4 +46,10 @@ public class NoteController {
         noteRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
+    // YENİ: Sadece belirli bir oyuna ait notları getir
+    @GetMapping("/game/{gameId}")
+    public ResponseEntity<List<Note>> getNotesByGameId(@PathVariable Long gameId) {
+        return ResponseEntity.ok(noteRepository.findByGameId(gameId));
+    }
 }

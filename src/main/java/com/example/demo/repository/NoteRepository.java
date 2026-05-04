@@ -11,4 +11,6 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
     // Spring Data JPA bu isimden SQL sorgusunu otomatik üretir:
     // SELECT * FROM notes WHERE user_id = ? AND note_type = ?
     List<Note> findByUserIdAndNoteType(Long userId, String noteType);
+    // YENİ: Spesifik bir oyuna ait notları getiren sorgu
+    List<Note> findByGameId(Long gameId);
 }

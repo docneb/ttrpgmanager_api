@@ -28,5 +28,9 @@ public class Note {
     @Column(name = "game_id")
     private Long gameId;
 
+    // Getter ve Setter'ını da eklemeyi unutma:
+    public Long getGameId() { return gameId; }
+    public void setGameId(Long gameId) { this.gameId = gameId; }
+
     private LocalDateTime createdAt = LocalDateTime.now();
 }

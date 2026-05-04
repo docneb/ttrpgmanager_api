@@ -29,6 +29,10 @@ public class Game {
     @Column(name = "invite_code", unique = true)
     private String inviteCode;
 
+    @Column(name = "is_finished")
+    @JsonProperty("isFinished")
+    private boolean isFinished = false;
+
     // YENİ EKLENEN: Oyuna katılan oyuncuların ID'lerini tutan liste
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "game_players", joinColumns = @JoinColumn(name = "game_id"))
