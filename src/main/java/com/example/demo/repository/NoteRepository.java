@@ -8,9 +8,12 @@ import java.util.List;
 
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
-    // Spring Data JPA bu isimden SQL sorgusunu otomatik üretir:
-    // SELECT * FROM notes WHERE user_id = ? AND note_type = ?
-    List<Note> findByUserIdAndNoteType(Long userId, String noteType);
-    // YENİ: Spesifik bir oyuna ait notları getiren sorgu
+
+    // ESKİ HALİ: List<Note> findByUserIdAndNoteType(Long userId, String noteType);[cite: 33]
+
+    // YENİ: Sadece ana havuza ait olanları (gameId'si null olan şablonları) getirir
+    List<Note> findByUserIdAndNoteTypeAndGameIdIsNull(Long userId, String noteType);
+
+    // Spesifik bir oyuna ait kopyalanmış notları getiren sorgu[cite: 33]
     List<Note> findByGameId(Long gameId);
 }
