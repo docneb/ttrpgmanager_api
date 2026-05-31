@@ -8,6 +8,23 @@ import java.time.LocalDateTime;
 @Table(name = "player_characters")
 @Data
 public class PlayerCharacter {
+    public enum CharacterType {
+        PLAYER,
+        NPC
+    }
+
+    public enum Alignment {
+        LAWFUL_GOOD,
+        LAWFUL_NATURAL,
+        LAWFUL_EVIL,
+        NATURAL_GOOD,
+        TRUE_NATURAL,
+        NATURAL_EVIL,
+        CHAOTIC_GOOD,
+        CHAOTIC_NATURAL,
+        CHAOTIC_EVIL
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +41,17 @@ public class PlayerCharacter {
     // İlişki 2: Bu karakter hangi oyunda? (Null ise henüz bir oyuna katılmamış demektir)
     @Column(name = "game_id")
     private Long gameId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "character_type", nullable = false)
+    private CharacterType characterType = CharacterType.PLAYER;
+
+    @Column(name = "background", nullable = false, columnDefinition = "TEXT")
+    private String background = "";
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "alignment", nullable = false)
+    private Alignment alignment = Alignment.TRUE_NATURAL;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }
