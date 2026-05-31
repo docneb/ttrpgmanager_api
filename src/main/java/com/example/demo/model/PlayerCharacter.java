@@ -30,8 +30,8 @@ public class PlayerCharacter {
     private Long id;
 
     private String name;
-    private String race;      // Örn: Elf, Human, Dwarf
-    private String charClass; // Örn: Wizard, Fighter, Rogue
+    private String race;      // Örn: Elf, Human
+    private String charClass; // Örn: Wizard, Fighter
     private int level = 1;
 
     // İlişki 1: Bu karakter hangi oyuncuya (User) ait?
@@ -46,50 +46,12 @@ public class PlayerCharacter {
     @Column(name = "character_type", nullable = false)
     private CharacterType characterType = CharacterType.PLAYER;
 
-    // D&D 5e Background (mekanik seçim: Acolyte, Soldier, vb.)
     @Column(name = "background", nullable = false, columnDefinition = "TEXT")
     private String background = "";
 
     @Enumerated(EnumType.STRING)
     @Column(name = "alignment", nullable = false)
-    private Alignment alignment = Alignment.TRUE_NEUTRAL;
-
-    // D&D 5e Ability Scores (standart değer: 10 = ortalama insan)
-    @Column(nullable = false)
-    private int strength = 10;
-
-    @Column(nullable = false)
-    private int dexterity = 10;
-
-    @Column(nullable = false)
-    private int constitution = 10;
-
-    @Column(nullable = false)
-    private int intelligence = 10;
-
-    @Column(nullable = false)
-    private int wisdom = 10;
-
-    @Column(nullable = false)
-    private int charisma = 10;
-
-    // Combat Stats
-    @Column(name = "hit_points", nullable = false)
-    private int hitPoints = 10;
-
-    @Column(name = "armor_class", nullable = false)
-    private int armorClass = 10;
-
-    @Column(nullable = false)
-    private int speed = 30;
-
-    // Serbest hikaye metni (backstory)
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String backstory = "";
-
-    // İsteğe bağlı karakter resmi/avatar yolu
-    @Column(name = "avatar_url")
-    private String avatarUrl = "";
+    private Alignment alignment = Alignment.TRUE_NATURAL;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }
