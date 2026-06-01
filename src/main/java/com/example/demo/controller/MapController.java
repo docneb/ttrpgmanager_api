@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Map;
 import com.example.demo.repository.MapRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class MapController {
     // Yeni harita ekleme
     @PostMapping("/create")
     public ResponseEntity<Map> createMap(@RequestBody Map map) {
-        return ResponseEntity.ok(mapRepository.save(map));
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapRepository.save(map));
     }
 
     // Belirli bir oyuna ait haritaları getirme

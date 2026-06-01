@@ -24,7 +24,7 @@ public class PlayerCharacterController {
         if (character.getCharacterType() == null) {
             character.setCharacterType(PlayerCharacter.CharacterType.PLAYER);
         }
-        return ResponseEntity.ok(characterRepository.save(character));
+        return ResponseEntity.status(HttpStatus.CREATED).body(characterRepository.save(character));
     }
 
     // Bir oyuncunun tüm karakterlerini getirme (Karakter Seçim ekranı için)

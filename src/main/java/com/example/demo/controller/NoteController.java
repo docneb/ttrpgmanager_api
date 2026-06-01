@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Note;
 import com.example.demo.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class NoteController {
     // 2. Yeni Not Ekle
     @PostMapping("/create")
     public ResponseEntity<Note> createNote(@RequestBody Note note) {
-        return ResponseEntity.ok(noteRepository.save(note));
+        return ResponseEntity.status(HttpStatus.CREATED).body(noteRepository.save(note));
     }
 
     // 3. Not Güncelle
@@ -43,6 +44,9 @@ public class NoteController {
     // 4. Not Sil
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable Long id) {
+        if (!noteRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
         noteRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }

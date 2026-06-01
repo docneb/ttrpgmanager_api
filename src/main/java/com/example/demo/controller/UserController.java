@@ -28,9 +28,6 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody User loginRequest) {
-        // GELEN VERİYİ KONTROL ET
-        System.out.println("Giriş denemesi: " + loginRequest.getEmail());
-        System.out.println("Gelen şifre: " + loginRequest.getPassword());
         // Repository'den email ile kullanıcıyı buluyoruz
         User user = userRepository.findByEmail(loginRequest.getEmail());
 

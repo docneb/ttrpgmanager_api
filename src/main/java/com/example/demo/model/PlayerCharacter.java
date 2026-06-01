@@ -51,7 +51,7 @@ public class PlayerCharacter {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "alignment", nullable = false)
-    private Alignment alignment = Alignment.TRUE_NATURAL;
+    private Alignment alignment = Alignment.TRUE_NEUTRAL;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }

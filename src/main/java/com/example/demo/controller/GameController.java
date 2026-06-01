@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.Game;
 import com.example.demo.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class GameController {
     public ResponseEntity<Game> createGame(@RequestBody Game game) {
         // Oyun veritabanına kaydedilmeden önce rastgele kod ata
         game.setInviteCode(generateInviteCode());
-        return ResponseEntity.ok(gameRepository.save(game));
+        return ResponseEntity.status(HttpStatus.CREATED).body(gameRepository.save(game));
     }
 
     @GetMapping("/my-games/{gmId}")
