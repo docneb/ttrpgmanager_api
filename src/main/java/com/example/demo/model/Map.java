@@ -21,5 +21,9 @@ public class Map {
     @Column(name = "game_id")
     private Long gameId;
 
+    // YENİ: Haritayı havuzuna yükleyen GM'nin ID'si
+    @Column(name = "gm_id")
+    private Long gmId;
+
     private LocalDateTime createdAt = LocalDateTime.now();
 }

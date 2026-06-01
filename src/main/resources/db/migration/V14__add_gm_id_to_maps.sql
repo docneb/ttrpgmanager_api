@@ -1,0 +1,2 @@
+ALTER TABLE maps ADD COLUMN gm_id BIGINT;
+

@@ -16,11 +16,11 @@ public class MapController {
     @Autowired
     private MapRepository mapRepository;
 
-    // Havuzdaki tüm şablon haritaları getirme (Oyun kopyaları hariç)
-    @GetMapping("/all")
-    public ResponseEntity<List<Map>> getAllMaps() {
-        // findAll() yerine findByGameIdIsNull() kullanıyoruz
-        return ResponseEntity.ok(mapRepository.findByGameIdIsNull());
+    // Havuzdaki tüm şablon haritaları getirme (Oyun kopyaları hariç), GM bazlı.
+    @GetMapping("/all/{gmId}")
+    public ResponseEntity<List<Map>> getAllMaps(@PathVariable Long gmId) {
+        // findAll() yerine findByGameIdIsNullAndGmId() kullanıyoruz
+        return ResponseEntity.ok(mapRepository.findByGameIdIsNullAndGmId(gmId));
     }
 
     // Yeni harita ekleme

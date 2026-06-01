@@ -8,6 +8,6 @@ public interface MapRepository extends JpaRepository<Map, Long> {
     // Belirli bir oyuna ait haritaları getirmek için
     List<Map> findByGameId(Long gameId);
 
-    // YENİ EKLENEN: Sadece game_id'si null olanları (Havuz Şablonlarını) getirir
-    List<Map> findByGameIdIsNull();
+    // YENİ EKLENEN: Sadece game_id'si null olanları (Havuz Şablonlarını) belirli bir GM'ye göre getirir
+    List<Map> findByGameIdIsNullAndGmId(Long gmId);
 }
