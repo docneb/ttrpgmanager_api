@@ -21,5 +21,9 @@ public class Map {
     @Column(name = "game_id")
     private Long gameId;
 
+    // YENİ EKLENEN: Haritanın sahibi olan GM'in ID'si
+    @Column(name = "owner_id")
+    private Long ownerId;
+
     private LocalDateTime createdAt = LocalDateTime.now();
 }

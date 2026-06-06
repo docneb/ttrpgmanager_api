@@ -5,9 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface MapRepository extends JpaRepository<Map, Long> {
-    // Belirli bir oyuna ait haritaları getirmek için
     List<Map> findByGameId(Long gameId);
 
-    // YENİ EKLENEN: Sadece game_id'si null olanları (Havuz Şablonlarını) getirir
-    List<Map> findByGameIdIsNull();
+    // DEĞİŞTİRİLEN: Sadece bu kullanıcıya ait olan havuz şablonlarını getirir
+    List<Map> findByGameIdIsNullAndOwnerId(Long ownerId);
 }

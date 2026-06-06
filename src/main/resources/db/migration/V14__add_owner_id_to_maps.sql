@@ -1,0 +1,2 @@
+ALTER TABLE maps
+    ADD COLUMN owner_id BIGINT;
